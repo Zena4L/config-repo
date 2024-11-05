@@ -1,0 +1,23 @@
+server:
+  port: 3000
+  tomcat:
+    connection-timeout: 2s
+
+spring:
+  application:
+    name: product-service
+  datasource:
+    username: user
+    password: password
+    url: jdbc:postgresql://localhost:5431/product
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+    open-in-view: true
+
