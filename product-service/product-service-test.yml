@@ -7,8 +7,6 @@ server:
       min-spare: 5
 
 spring:
-  profiles:
-    active: test-data
   application:
     name: product-service
   datasource:
