@@ -24,6 +24,6 @@ spring:
         database-platform: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
         use_sql_comments: true
-    show-sql: false
+    show-sql: true
     open-in-view: false
 
