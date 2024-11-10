@@ -12,7 +12,7 @@ spring:
   datasource:
     username: user
     password: password
-    url: jdbc:postgresql://localhost:5431/product
+    url: jdbc:postgresql://localhost:5432/product
     hikari:
       connection-timeout: 2000
       maximum-pool-size: 5
