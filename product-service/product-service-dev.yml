@@ -10,8 +10,6 @@ server:
 spring:
   lifecycle:
     timeout-per-shutdown-phase: 15s
-  # profiles:
-  #   active: dev
   application:
     name: product-service
   datasource:
