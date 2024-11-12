@@ -16,7 +16,7 @@ spring:
     pool:
       max-create-connection-time: 2s
       initial-size: 5
-      max-size: 1
+      max-size: 10
   jpa:
     hibernate:
       ddl-auto: validate
