@@ -27,7 +27,7 @@ spring:
         show_sql: true
     open-in-view: false
   flyway:
-    url: jdbc:postgresql://localhost:5431/order_service
+    url: "jdbc:postgresql://localhost:5431/order_service"
     user: user
     password: password
 #    locations: classpath:db/migration
