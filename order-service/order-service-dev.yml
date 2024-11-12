@@ -1,0 +1,31 @@
+server:
+  port: 3002
+  shutdown: graceful
+  netty:
+    connection-timeout: 2s
+    idle-timeout: 15s
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
+  application:
+    name: order-service
+  r2dbc:
+    username: user
+    password: password
+    url: r2dbc:postgresql://localhost:5431/order_service
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        show_sql: true
+    open-in-view: false
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
