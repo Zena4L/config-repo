@@ -13,6 +13,10 @@ spring:
     username: user
     password: password
     url: r2dbc:postgresql://localhost:5431/order_service
+    pool:
+      max-create-connection-time: 2s
+      initial-size: 5
+      max-size: 1
   jpa:
     hibernate:
       ddl-auto: validate
