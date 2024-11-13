@@ -39,4 +39,4 @@ management:
       exposure:
         include: refresh
 client:
-  product-service-uri: http://localhost:3001/api/v1
+  product-service-uri: http://localhost:3000/api/v1
