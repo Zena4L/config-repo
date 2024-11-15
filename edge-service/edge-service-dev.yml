@@ -6,13 +6,6 @@ server:
   shutdown: graceful
 
 spring:
-  application:
-    name: edge-service
-  lifecycle:
-    timeout-per-shutdown-phase: 15s
-  config:
-    import: "optional:configserver:"
-  cloud:
     gateway:
       httpclient:
         connect-timeout: 2000
