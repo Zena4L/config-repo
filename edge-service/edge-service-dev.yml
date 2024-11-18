@@ -52,12 +52,10 @@ spring:
               firstBackoff: 50ms
               factor: 2
               basedOnPreviousValue: false
-
   session:
     timeout: 10m
     redis:
       namespace: ds:edge
-
   data:
     redis:
       connect-timeout: 2s

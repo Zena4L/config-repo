@@ -1,0 +1,9 @@
+server:
+  port: 3006
+  tomcat:
+    connection-timeout: 2s
+    threads:
+      max: 50
+      min-spare: 5
+  shutdown: graceful
+
