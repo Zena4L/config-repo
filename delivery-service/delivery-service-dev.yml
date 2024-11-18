@@ -7,3 +7,7 @@ server:
       min-spare: 5
   shutdown: graceful
 
+spring:
+  cloud:
+    function:
+      definition: pack|label
