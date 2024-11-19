@@ -39,8 +39,10 @@ spring:
         dispatchOrder-in-0:
           destination: order-dispatched
           group: ${spring.application.name}
+          content-type: application/json
         acceptOrder-out-0:
           destination: order-accepted
+          content-type: application/json
       default-binder: kafka
       kafka:
         binder:
