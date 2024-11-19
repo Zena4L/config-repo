@@ -30,8 +30,19 @@ spring:
     url: "jdbc:postgresql://localhost:5431/order_service"
     user: user
     password: password
-#    locations: classpath:db/migration
-
+  #    locations: classpath:db/migration
+  cloud:
+    function:
+      definition: dispatchOrder
+    stream:
+      bindings:
+        dispatchOrder-in-0:
+          destination: order-dispatched
+          group: ${spring.application.name}
+      default-binder: kafka
+      kafka:
+        binder:
+          brokers: localhost:9093
 
 management:
   endpoints:
