@@ -11,3 +11,15 @@ spring:
   cloud:
     function:
       definition: pack|label
+    stream:
+      bindings:
+        packlabel-in-0:
+          destination: order-accepted
+          content-type: application/json
+        packlabel-out-0:
+          destination: order-dispatched
+          content-type: application/json
+      default-binder: kafka
+      kafka:
+        binder:
+          brokers: localhost:9093
