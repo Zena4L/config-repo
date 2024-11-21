@@ -6,52 +6,64 @@ server:
   shutdown: graceful
 
 spring:
-    gateway:
-      httpclient:
-        connect-timeout: 2000
-        response-timeout: 5s
-        pool:
-          type: elastic
-          max-idle-time: 15s
-          max-life-time: 60s
-      routes:
-        - id: product-route
-          uri: "${PRODUCT_SERVICE_URL:http://localhost:3000}/api/v1/product"
-          predicates:
-            - Path=/api/v1/product/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: productCircuitBreaker
-                fallbackUri: forward:/product-fallback
-        - id: order-route
-          uri: "${ORDER_SERVICE_URL:http://localhost:3002}/api/v1/order"
-          predicates:
-            - Path=/api/v1/order/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: orderCircuitBreaker
-      default-filters:
-        - SaveSession
-        - name: RequestRateLimiter
-          args:
-            redis-rate-limiter:
-              replenishRate: 10
-              burstCapacity: 20
-              requestTokens: 1
-        - name: Retry
-          args:
-            retries: 3
-            methods: GET
-            series: SERVER_ERROR
-            exceptions:
-              - java.io.IOException
-              - java.util.concurrent.TimeoutException
-            backoff:
-              firstBackoff: 50ms
-              factor: 2
-              basedOnPreviousValue: false
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: edge-service
+            client-secret: ds-keycloak-secret
+            scope:
+              - openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:9000/realms/ds
+  gateway:
+    httpclient:
+      connect-timeout: 2000
+      response-timeout: 5s
+      pool:
+        type: elastic
+        max-idle-time: 15s
+        max-life-time: 60s
+    routes:
+      - id: product-route
+        uri: "${PRODUCT_SERVICE_URL:http://localhost:3000}/api/v1/product"
+        predicates:
+          - Path=/api/v1/product/**
+        filters:
+          - name: CircuitBreaker
+            args:
+              name: productCircuitBreaker
+              fallbackUri: forward:/product-fallback
+      - id: order-route
+        uri: "${ORDER_SERVICE_URL:http://localhost:3002}/api/v1/order"
+        predicates:
+          - Path=/api/v1/order/**
+        filters:
+          - name: CircuitBreaker
+            args:
+              name: orderCircuitBreaker
+    default-filters:
+      - SaveSession
+      - name: RequestRateLimiter
+        args:
+          redis-rate-limiter:
+            replenishRate: 10
+            burstCapacity: 20
+            requestTokens: 1
+      - name: Retry
+        args:
+          retries: 3
+          methods: GET
+          series: SERVER_ERROR
+          exceptions:
+            - java.io.IOException
+            - java.util.concurrent.TimeoutException
+          backoff:
+            firstBackoff: 50ms
+            factor: 2
+            basedOnPreviousValue: false
   session:
     timeout: 10m
     redis:
