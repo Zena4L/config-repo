@@ -17,7 +17,7 @@ spring:
               - openid
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/ds
+            issuer-uri: http://localhost:8080/realms/PolarBooksop
   gateway:
     httpclient:
       connect-timeout: 2000
