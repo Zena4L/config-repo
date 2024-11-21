@@ -17,7 +17,7 @@ spring:
               - openid
         provider:
           keycloak:
-            issuer-uri: http://localhost:9000/realms/ds
+            issuer-uri: http://localhost:8080/realms/ds
   gateway:
     httpclient:
       connect-timeout: 2000
