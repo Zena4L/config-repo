@@ -92,7 +92,4 @@ resilience4j:
 logging:
   level:
     io.github.resilience4j: DEBUG
-
-logging:
-  level:
     org.springframework.security: DEBUG
