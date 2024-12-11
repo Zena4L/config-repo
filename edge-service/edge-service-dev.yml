@@ -12,7 +12,7 @@ spring:
         registration:
           keycloak:
             client-id: edge-service
-            client-secret: ds-keycloak-secret
+            client-secret: polar-keycloak-secret
             scope:
               - openid,roles
         provider:
